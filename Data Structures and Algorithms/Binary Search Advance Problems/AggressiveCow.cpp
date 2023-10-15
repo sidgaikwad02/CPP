@@ -16,7 +16,7 @@ bool canWePlace(vector<int> &stalls, int dist, int cows) {
     return false;
 }
 int aggressiveCows(vector<int> &stalls, int k) {
-    int n = stalls.size(); //size of array
+    int n = stalls.size(); //size of an array
     //sort the stalls[]:
     sort(stalls.begin(), stalls.end());
 
