@@ -1,8 +1,8 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 
 int solve(int n){
+
     // base case
 
     if(n == 1){
@@ -13,14 +13,14 @@ int solve(int n){
         return 1;
     }
 
-    int ans = (n-1)* (solve(n-1) + (solve(n-2)));
+    int ans = ((n-1) * (solve(n-1)+ solve(n-2)));
+    return ans;
 }
 
-int main() {
+int main(){
 
     int n;
-    cin>>n;
+    cin >> n;
 
-    cout<< solve(n)<<endl;
-
+    cout<<"Possible dearrangment is: "<<solve(n)<<endl;
 }
