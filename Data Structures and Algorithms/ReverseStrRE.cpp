@@ -9,7 +9,7 @@ void reverse(string&s, int start, int end){
 
     }
 
-    // ek case tum solve kro
+    // ek case tum solve kro jii
 
     swap(s[start], s[end]);
 
