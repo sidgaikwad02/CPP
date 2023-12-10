@@ -1,4 +1,4 @@
 # CPP
 consistency is the key!!
-keep it up..
+keep it up.
 
