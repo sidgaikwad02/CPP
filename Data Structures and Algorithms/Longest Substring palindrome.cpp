@@ -1,28 +1,35 @@
-class Solution {
-public:
-    bool isPalindrome(string&s, int start, int end){
-        while(start < end){
-            if(s[start] != s[end]){
-                return false;
-            }
-            start++;
-            end--;
+#include<iostream>
+using namespace std;
+
+bool isPalindrome(string &s, int start, int end){
+
+    while(start < end){
+        if(s[start] != s[end]){
+            return false;
         }
-        return true;
+        start++;
+        end--;
     }
+    return true;
+}
 
-    string longestPalindrome(string s) {
-        string ans = "";
+int main(){
 
-        for(int i=0; i< s.size();i++){
-            for(int j=i; j < s.size();j++){
-                if(isPalindrome(s, i , j)){
-                    string t = s.substr(i, j - i + 1);
-                    ans = t.size() > ans.size() ? t : ans;
+    string s;
+    cout<<"Enter a string: ";
+    cin>>s;
 
-                }
+    string ans = "";
+
+    for(int i=0; i<s.size(); i++){
+        for(int j=i; j< s.size(); j++){
+            if(isPalindrome(s, i, j)){
+                string t = s.substr(i, j - i + 1);
+
+                ans = t.size() > ans.size() ? t: ans;
             }
         }
-        return ans;
     }
-};
+    cout<<"Longest Palindromic string is: "<< ans <<endl;
+    return 0;
+}
