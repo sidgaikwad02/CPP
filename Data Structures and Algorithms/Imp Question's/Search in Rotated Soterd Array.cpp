@@ -1,69 +1,78 @@
-class Solution {
-public:
-    int findPivotIndex(vector<int>& nums) {
-        int n = nums.size();
-        int s = 0;
-        int e = n-1;
-        int mid = s + (e - s)/2;
+#include <iostream>
+#include <vector>
 
-        while(s <= e) {
-            if(s == e) {
-                return s;
-            }
+using namespace std;
 
-            if(mid+1 < n && nums[mid] > nums[mid+1]) {
-                return mid;
-            }
+int findPivotIndex(vector<int>& nums) {
+    int n = nums.size();
+    int s = 0;
+    int e = n-1;
+    int mid = s + (e - s)/2;
 
-            else if(mid-1 >= 0 && nums[mid] < nums[mid-1]) {
-                return mid-1;
-            }
-
-            else if(nums[s] > nums[mid]) {
-                e = mid - 1;
-            }
-            else
-
-                s = mid + 1;
-
-            mid = s + (e - s)/2;
+    while(s <= e) {
+        if(s == e) {
+            return s;
         }
-        return -1;
-    }
 
-    int BinarySearch(vector<int>& nums, int s, int e, int target) {
-        int mid = s + (e - s)/ 2;
-
-        while(s <= e) {
-            if(nums[mid] == target) {
-                return mid;
-            }
-
-            if(target > nums[mid]) {
-                s = mid+1;
-            }
-            else{
-                e = mid - 1;
-            }
-
-            mid = s + (e - s)/2;
+        if(mid+1 < n && nums[mid] > nums[mid+1]) {
+            return mid;
         }
-        return -1;
+
+        else if(mid-1 >= 0 && nums[mid] < nums[mid-1]) {
+            return mid-1;
+        }
+
+        else if(nums[s] > nums[mid]) {
+            e = mid - 1;
+        }
+        else
+            s = mid + 1;
+
+        mid = s + (e - s)/2;
     }
+    return -1;
+}
 
-    int search(vector<int>& nums, int target) {
-        int pivotIndex = findPivotIndex(nums);
-        int ans = -1;
-        int n = nums.size();
+int BinarySearch(vector<int>& nums, int s, int e, int target) {
+    int mid = s + (e - s)/ 2;
 
-        // search in A
+    while(s <= e) {
+        if(nums[mid] == target) {
+            return mid;
+        }
 
-        if(target >= nums[0] && target <= nums[pivotIndex]){
-            ans = BinarySearch(nums, 0, pivotIndex, target);
+        if(target > nums[mid]) {
+            s = mid+1;
         }
         else{
-            ans = BinarySearch(nums, pivotIndex+1, n-1, target);
+            e = mid - 1;
         }
-        return ans;
+
+        mid = s + (e - s)/2;
     }
-};
+    return -1;
+}
+
+int search(vector<int>& nums, int target) {
+    int pivotIndex = findPivotIndex(nums);
+    int ans = -1;
+    int n = nums.size();
+
+    // search in A
+    if(target >= nums[0] && target <= nums[pivotIndex]){
+        ans = BinarySearch(nums, 0, pivotIndex, target);
+    }
+    else{
+        ans = BinarySearch(nums, pivotIndex+1, n-1, target);
+    }
+    return ans;
+}
+
+int main() {
+    vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
+    int target = 0;
+    int result = search(nums, target);
+    cout << "Target " << target << " found at index: " << result << endl;
+
+    return 0;
+}
