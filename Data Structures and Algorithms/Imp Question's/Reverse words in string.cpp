@@ -1,18 +1,41 @@
-class Solution {
-    public: string reverseWords(string s) {
-        // Trim the input string to remove leading and trailing spaces
-        string str[] = s.trim().split("\\s+");
-
-        // Initialize the output string
-        string out = "";
-
-        // Iterate through the words in reverse order
-        for (int i = str.length - 1; i > 0; i--) {
-            // Append the current word and a space to the output
-            out += str[i] + " ";
+#include<bits/stdc++.h>
+using namespace std;
+string result(string s)
+{
+    int left = 0;
+    int right = s.length()-1;
+    
+    string temp="";
+    string ans="";
+    
+    //Iterate the string and keep on adding to form a word
+    //If empty space is encountered then add the current word to the result
+    while (left <= right) {
+        char ch= s[left];
+        if (ch != ' ') {
+            temp += ch;
+        } else if (ch == ' ') {
+            if (ans!="") ans = temp + " " + ans;
+            else ans = temp;
+            temp = "";
         }
-
-        // Append the first word to the output (without trailing space)
-        return out + str[0];
+        left++;
     }
+    
+    //If not empty string then add to the result(Last word is added)
+    if (temp!="") {
+        if (ans!="") ans = temp + " " + ans;
+        else ans = temp;
+    }
+    
+    return ans;    
+}
+int main()
+{
+    string st="TUF is great for interview preparation";
+    cout<<"Before reversing words: "<<endl;
+    cout<<st<<endl;
+    cout<<"After reversing words: "<<endl;
+    cout<<result(st);
+    return 0;
 }
