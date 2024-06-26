@@ -1,5 +1,5 @@
 // Function overloading:
-                        Function means having same name but different in parameter.
+                        Function overloading means having same name but different in parameter.
 
 
 #include<iostream>
