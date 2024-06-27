@@ -1,5 +1,5 @@
 // Run time polymorphism
-// Function Overriding: Function overriding means Both parent and child class having same function with diffrent implementation.
+// Function Overriding: Function overriding means Both parent and child class having same function but diffrent implementation included.
 
 #include<iostream>
 using namespace std;
