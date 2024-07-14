@@ -1,4 +1,4 @@
-"Bubble Sort Algorithm"
+**Bubble Sort Algorithm**
 In Bubble Sort algorithm, 
 
 traverse from left and compare adjacent elements and the higher one is placed at right side. 
