@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int arr[] = {10,20,30,40,50,60};
+    int arr[] = {12,45,48,63,59,42,10};
     int n = sizeof(arr)/sizeof(arr[0]);
     
     int first = INT_MAX;
@@ -14,9 +14,11 @@ int main() {
             second = first;
             first = arr[i];
         }
-        else if( arr[i] < second) {
+        
+        else if(arr[i] < second) {
             second = arr[i];
         }
     }
-    cout<<second;
+    
+    cout <<"Second smallest element in the array is: "<<second<<endl;
 }
