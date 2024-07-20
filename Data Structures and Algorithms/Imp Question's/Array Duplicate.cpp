@@ -1,3 +1,4 @@
+// Time complexity: O( n^2)
 #include<iostream>
 using namespace std;
 
@@ -27,4 +28,32 @@ int main() {
     printDuplicates(arr, n);
     
     return 0;
+}
+
+// Time complexity: O (n )
+#include<iostream>
+#include<unordered_map>
+using namespace std;
+
+void repeating(int arr[], int n) {
+    unordered_map<int, int> mp;
+    int count_dis = 0;
+    
+    for(int i = 0; i < n; i++)
+        mp[arr[i]]++;
+    
+    for(auto it = mp.begin(); it != mp.end(); it++) {
+        if(it->second != 1){
+        cout<< it-> first<<" ";
+        }
+       
+    }
+    cout<<endl;
+}
+
+int main() {
+    int arr[]= {10,20,20,30,40,50};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    
+    repeating(arr, n);
 }
