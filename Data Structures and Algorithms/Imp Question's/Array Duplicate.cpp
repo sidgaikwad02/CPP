@@ -1,45 +1,30 @@
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
+#include<iostream>
 using namespace std;
 
-    vector<int> duplicates(vector<long long> arr) {
-        unordered_map<long long, int> elementCount;
-        vector<int> result;
-
-        // Count occurrences of each element
-        for (auto num : arr) {
-            elementCount[num]++;
-        }
-
-        // Collect elements that appear more than once
-        for (auto &pair : elementCount) {
-            if (pair.second > 1) {
-                result.push_back(pair.first);
+void printDuplicates(int arr[], int n) {
+    int visited[n];
+    
+    for(int i = 0; i <n; i++) {
+        int count =1;
+        for(int j = i + 1; j < n; j++) {
+            if(arr[i] == arr[j]) {
+                count++;
+                visited[j] = 1;
             }
         }
-
-        // If no duplicates are found, return a vector with -1
-        if (result.empty()) {
-            return {-1};
+        
+        if(count != 1) {
+            cout<<"Duplicate element is: " <<arr[i]<<endl;;
         }
-
-        // Sort the result to maintain a consistent order
-        sort(result.begin(), result.end());
-
-        return result;
     }
+    cout<<endl;
+}
 
-
-// Example usage
 int main() {
-    vector<long long> arr = {1, 2, 3, 1, 3, 6, 6};
+    int arr[] = {1,22,3,3,4,5,8,66,5,4};
+    int n = sizeof(arr)/sizeof(arr[0]);
     
-    vector<int> duplicates = solution.duplicates(arr);
-    
-    for (int num : duplicates) {
-        cout << num << " ";
-    }
+    printDuplicates(arr, n);
     
     return 0;
 }
