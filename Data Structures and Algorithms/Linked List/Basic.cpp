@@ -18,6 +18,50 @@ class Node {
     }
 };
 
+void insertAtHead(Node * &head,Node*&tail, int data) {
+    if(head == NULL) {
+        // empty LL
+        
+        // step1: create new node
+        Node* newNode = new Node(data);
+        // step2: update head
+        head = newNode;
+    }
+    else{
+        // Non-empty linked list
+        
+        // create a new node
+    Node* newNode = new Node(data);
+    // attach newnode to head node
+    newNode->next = head;
+    // update head
+    head = newNode;
+    }
+    
+}
+
+void insertAtTail(Node* &head, Node* &tail, int data) {
+    // empty LL
+    if(head == NULL) {
+        Node* newNode = new Node(data);
+        
+        tail = newNode;
+        head = newNode;
+    }else{
+        // Non-empty linked list
+        
+        Node* newNode = new Node(data);
+        
+        tail -> next = newNode;
+        
+        tail = newNode;
+    }
+    
+    
+    
+    
+}
+
 void printLL(Node* head) {
     Node* temp = head;
     
@@ -51,8 +95,15 @@ int main() {
     fourth->next= fifth;
     
     Node* head = first;
-    cout<<"Printing the entire linked list: "; 
+    Node* tail = fifth;
+    cout<<"Printing the entire linked list: ";
+    // insertAtHead(head,tail, 500);
+    insertAtTail(head,tail, 500);
     printLL(head);
     
-    cout<<"Length of LL is :" <<findLen(head) <<endl;
+    // cout<<"Length of LL is :" <<findLen(head) <<endl;
+    
+    
+    
+   
 }
