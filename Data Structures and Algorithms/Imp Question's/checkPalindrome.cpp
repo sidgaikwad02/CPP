@@ -1,43 +1,45 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
-bool checkPalindrome(char ch[], int n) {
+bool checkPalindrome(string &str, int n) {
     int i = 0;
     int j = n-1;
     
-    while( i <= j) {
-        if(ch[i] == ch[j]) {
-            i++;
-            j--;
-        }
-        else {
-            return false;
-        }
+    while(i <= j) {
+        if(str[i] == str[j]){
+        i++;
+        j--;
+    }
+    else{
+        return false;
+    }
     }
     return true;
 }
 
-int findLength(char ch[], int size) {
-    int index = 0;
-    
-    while(ch[index] != '\0') {
-        index++;
+int findLength(string &str){
+    int length = 0;
+    for(int i = 0;str[i] != '\0'; i++) {
+        length++;
     }
-    return index;
+    return length;
 }
 
 int main() {
-    char ch[100];
-    cin >> ch;
+    string str;
+    cout<<"Enter a string: ";
+    getline(cin, str);
     
-    int len = findLength(ch, 100);
+    int len = findLength(str);
     
-    bool isPalindrome = checkPalindrome(ch, len);
+    bool isPalindrome = checkPalindrome(str, len);
     
     if(isPalindrome) {
-        cout<< "Valid Palindrome" <<endl;
+        cout<<"Valid Palindrome"<<endl;
     }
-    else {
-        cout << "Invalid Palindrome" <<endl;
+    else{
+        cout<<"Invalid Palindrome"<<endl;
     }
+    
 }
