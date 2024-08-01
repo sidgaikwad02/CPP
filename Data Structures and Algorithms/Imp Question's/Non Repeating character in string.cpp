@@ -1,3 +1,4 @@
+// for first element
 #include<iostream>
 using namespace std;
 
@@ -30,3 +31,42 @@ int main() {
         cout<<"There is no Non repeating character in a string"<<endl;
     }
 }
+
+//for all
+#include <iostream>
+using namespace std;
+
+void nonRepeatingCharacters(string str) {
+    int freq[256] = {0};
+
+    // Count occurrences of each character
+    for (int i = 0; i < str.length(); i++) {
+        freq[str[i]]++;
+    }
+
+    // Print all non-repeating characters
+    bool found = false;
+    for (int i = 0; i < str.length(); i++) {
+        if (freq[str[i]] == 1) {
+            cout << str[i] << " ";
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "No non-repeating characters found in the string.";
+    }
+    cout << endl;
+}
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str);
+
+    cout << "The non-repeating characters in the string are: ";
+    nonRepeatingCharacters(str);
+
+    return 0;
+}
+
