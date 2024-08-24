@@ -1,27 +1,31 @@
 #include<iostream>
 using namespace std;
 
-int fib(int n) {
-    int a =0, b = 1, c;
+void printFibonacciSeries(int num) {
+    int a = 0, b = 1, c;
     
-    if(n == 0) {
-        return a;
+    if(num == 0) {
+        cout<<"0";
+        return;
     }
     
-    for(int i=2;i<=n;i++) {
-        c = a+b;
-        a=b;
-        b=c;
+    cout<<a<<" , " <<b;
+    
+    for(int i = 2; i < num; i++) {
+        c = a + b;
+        cout<<" , " <<c;
+        a = b;
+        b = c;
     }
-    return b;
+    cout<<endl;
 }
 
 int main() {
-    int n;
-    cout<<"Enter the number: ";
-    cin>> n;
+    int num;
+    cout<<"Enter a number: ";
+    cin >>num;
     
-    cout<<fib(n);
-    
+    cout<<"Fibanacci series upto "<<num<<" term is: ";
+    printFibonacciSeries(num);
     return 0;
 }
