@@ -1,37 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int isPalindrome(int n) {
+bool isPalindrome(int n) {
     int rev = 0, temp = n;
     
-    while(temp > 0){
-        int rem = temp % 10;
-        rev = rev * 10 + rem;
+    while(temp > 0) {
+        rev = rev * 10 + temp% 10;
         temp /= 10;
     }
     
-    if(n == rev ) 
-        return 1;
-        
-    return 0;
+    return n == rev;
 }
 
 int main() {
     int arr[] = {1, 121, 55551, 545545, 10111, 90};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int res = INT_MIN;
+    int n = sizeof(arr)/ sizeof(arr[0]);
+    int maxPalindrome = -1;
     
-    for(int i = 0;i < n; i++) {
-        if(isPalindrome(arr[i]) && res < arr[i]) 
-            res = arr[i];
-        
+    for(int i = 0; i < n; i++) {
+        if(isPalindrome(arr[i]) && arr[i] > maxPalindrome) {
+        maxPalindrome = arr[i];
     }
-    
-    if (res == INT_MIN)
-        res = -1;
-        
-        cout<<res;
-    
-    return res;
-    
+    }
+
+    cout<<maxPalindrome<<endl;
 }
