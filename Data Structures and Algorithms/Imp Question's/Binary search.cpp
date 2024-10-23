@@ -30,7 +30,7 @@ int binarySearch(int arr[], int start, int end, int target) {
         }
         
         else {
-            end = mid + 1;
+            end = mid - 1;
         }
         
         mid = start + (end - start) / 2;
